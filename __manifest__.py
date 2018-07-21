@@ -13,6 +13,5 @@
     ],
     'demo': [],
     'depends': ['mail','web', 'crm', 'website', 'website_support'],
-    'application': True,
     'installable': True,
 }
