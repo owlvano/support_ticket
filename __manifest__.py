@@ -10,6 +10,7 @@
     'license':'LGPL-3',
     'data': [
         'views/website_support_ticket_views.xml',
+        'views/website_support_ticket_subcategory_views.xml',
     ],
     'demo': [],
     'depends': ['mail','web', 'crm', 'website', 'website_support'],
