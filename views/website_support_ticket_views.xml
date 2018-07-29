@@ -33,6 +33,19 @@
           </field>
       </record>
 
+      <record id="website_support_ticket_view_tree" model="ir.ui.view">
+          <field name="name">website.support.ticket.tree.view</field>
+          <field name="model">website.support.ticket</field>
+          <field name="inherit_id" ref="website_support.website_support_ticket_view_tree" />
+          <field name="arch" type="xml">
+            <field name="create_user_id" position="after">
+              <field name="create_date" string="Create Date"/>
+            </field>
+            <field name="category" position="replace"/>
+            <field name="email" position="replace"/>
+          </field>
+      </record>
+
       <menuitem 
       	id="main_website_support_menu" 
       	web_icon="support_ticket,static/description/icon.png"

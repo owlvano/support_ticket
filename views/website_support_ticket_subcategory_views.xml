@@ -6,9 +6,9 @@
           <field name="model">website.support.ticket.subcategory</field>
           <field name="inherit_id" ref="website_support.website_support_ticket_subcategory_view_form" />
           <field name="arch" type="xml">
-      	      <xpath expr="//field[@name='name']" position="after">
+      	      <field name="name" position="after">
                 <field name="user_id" string="Assigned User"/>
-              </xpath>
+              </field>
       	  </field>
       </record>
 
