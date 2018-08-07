@@ -33,16 +33,33 @@
           </field>
       </record>
 
+      <record id="website_support_ticket_view_form" model="ir.ui.view">
+          <field name="name">website.support.ticket.form.view</field>
+          <field name="model">website.support.ticket</field>
+          <field name="inherit_id" ref="website_support.website_support_ticket_view_form" />
+          <field name="arch" type="xml">
+            <field name="close_time" position="before">
+              <field name="create_date" readonly="1"/>
+            </field>
+          </field>
+      </record>
+
       <record id="website_support_ticket_view_tree" model="ir.ui.view">
           <field name="name">website.support.ticket.tree.view</field>
           <field name="model">website.support.ticket</field>
           <field name="inherit_id" ref="website_support.website_support_ticket_view_tree" />
           <field name="arch" type="xml">
             <field name="create_user_id" position="after">
-              <field name="create_date" string="Create Date"/>
+              <field name="create_date"/>
+              <field name="close_date"/>
             </field>
             <field name="category" position="replace"/>
             <field name="email" position="replace"/>
+            <field name="ticket_number_display" position="replace"/>
+            <field name="create_user_id" position="replace"/>
+            <field name="subject" position="after">
+              <field name="create_user_id"/>
+            </field>
           </field>
       </record>
 
@@ -56,7 +73,7 @@
 
       <menuitem id="website_support.website_support_ticket_menu" name="Support Tickets" parent="website_support.website_support_parent_menu" action="website_support.website_support_ticket_action"/>
 
-      <menuitem id="website_support.website_support_config_parent_menu" name="Configuration" parent="main_website_support_menu" sequence="20"/>
+      <menuitem id="website_support.website_support_config_parent_menu" name="Configuration" parent="main_website_support_menu" sequence="20" groups="website_support.support_group"/>
  
     </data>
 </odoo>
