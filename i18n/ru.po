@@ -1,0 +1,39 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* support_ticket
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20180727\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-07 21:31+0000\n"
+"PO-Revision-Date: 2018-08-07 21:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_subcategory_user_id
+#: model:ir.ui.view,arch_db:support_ticket.website_support_ticket_subcategory_view_form
+#: model:ir.ui.view,arch_db:support_ticket.website_support_ticket_subcategory_view_tree
+msgid "Assigned User"
+msgstr "Ответственный Пользователь"
+
+#. module: support_ticket
+#: model:ir.ui.menu,name:support_ticket.main_website_support_menu
+msgid "Website Support"
+msgstr "Горячая Линия"
+
+#. module: support_ticket
+#: model:ir.model,name:support_ticket.model_website_support_ticket
+msgid "Website Support Ticket"
+msgstr "Website Support Ticket"
+
+#. module: support_ticket
+#: model:ir.model,name:support_ticket.model_website_support_ticket_subcategory
+msgid "website.support.ticket.subcategory"
+msgstr "website.support.ticket.subcategory"
+

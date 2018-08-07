@@ -1,5 +1,5 @@
 {
-    'name': "Website Help Desk / Support Ticket Mod",
+    'name': "Горячая Линия",
     'version': "1.6.0",
     'author': "Ivan Sova / Sythil Tech",
     'category': "Tools",

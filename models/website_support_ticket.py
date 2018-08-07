@@ -65,5 +65,4 @@ class WebsiteSupportTicket(models.Model):
 class WebsiteSupportTicketSubCategories(models.Model):
 
     _inherit = "website.support.ticket.subcategory"
-
     user_id = fields.Many2one('res.users', string="Assigned User")
