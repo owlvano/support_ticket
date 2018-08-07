@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+        <template id="support_front_assert" inherit_id="website.assets_frontend" name="Website Support Front Asserts">
+            <xpath expr="/t" position="inside">
+                <link rel="stylesheet" href="/website_support/static/src/css/support.css"/>
+            </xpath>
+        </template>
+        
+        
+
+<template id="support_submit_ticket" inherit_id="website_support.support_submit_ticket" name="Submit Support Ticket" page="True">
+    <xpath expr="//div[@id='subcategoy_container']" position="after">
+        <script>
+
+        $(document).ready(function() {
+
+          $(document).on('change',"#subcategory", function(){
+            update_sub_category_user();
+          });   
+
+          function update_sub_category_user(){
+            $.ajax({url: "/support/subcategories/fetch?subcategory=" + $("#subcategory").val(), success: function(result){
+              $("#subcategoy_user").html(result);
+            }});
+          }
+        });
+
+        </script>
+        <div id="subcategory_user">
+          
+        </div>
+    </xpath>
+</template>
+
+</data>
+</openerp>
