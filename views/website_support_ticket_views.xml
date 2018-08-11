@@ -52,6 +52,7 @@
             <field name="create_user_id" position="after">
               <field name="create_date"/>
               <field name="close_date"/>
+              <field name="partner_id"/>
             </field>
             <field name="category" position="replace"/>
             <field name="email" position="replace"/>

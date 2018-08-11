@@ -7,7 +7,12 @@ class WebsiteSupportTicket(models.Model):
     
     @api.onchange('sub_category_id')
     def _onchange_sub_category_id(self):
-        self.user_id= self.sub_category_id.user_id
+        if not self.user_id:
+            self.user_id = self.sub_category_id.user_id
+
+    @api.onchange('category')
+    def _onchange_category(self):
+        self.sub_category_id = ""
 
     @api.model
     def create(self, vals):
