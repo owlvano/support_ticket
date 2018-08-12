@@ -38,5 +38,8 @@
             <field name="groups" eval="[(4, ref('support_ticket.group_hotline'))]"/>
         </record>
 
+
+        <delete id="website_support.support_group" model="res.groups"/>
+
    </data>
 </odoo>
