@@ -9,8 +9,10 @@
     'website':'https://www.odoo.com/apps/modules/10.0/website_support/',
     'license':'LGPL-3',
     'data': [
+        'security/user_groups.xml',
+        'security/ir.model.access.csv',
         'views/website_support_ticket_views.xml',
-        'views/website_support_ticket_subcategory_views.xml',
+        'views/website_support_ticket_subcategory_views.xml',      
     ],
     'demo': [],
     'depends': ['mail','web', 'crm', 'website', 'website_support'],

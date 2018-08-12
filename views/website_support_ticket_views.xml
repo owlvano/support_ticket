@@ -69,12 +69,25 @@
       	web_icon="support_ticket,static/description/icon.png"
       	name="Website Support"/>
 
-      <menuitem id="website_support.website_support_parent_menu" name="Customer Support" parent="main_website_support_menu" sequence="10" 
-        groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager,website_support.support_group"/>
+      <menuitem 
+        id="website_support.website_support_parent_menu" 
+        name="Customer Support" 
+        parent="main_website_support_menu" 
+        sequence="10" 
+        groups="support_ticket.group_employee,support_ticket.group_hotline"/>
 
-      <menuitem id="website_support.website_support_ticket_menu" name="Support Tickets" parent="website_support.website_support_parent_menu" action="website_support.website_support_ticket_action"/>
+      <menuitem 
+        id="website_support.website_support_ticket_menu" 
+        name="Support Tickets" 
+        parent="website_support.website_support_parent_menu" 
+        action="website_support.website_support_ticket_action"/>
 
-      <menuitem id="website_support.website_support_config_parent_menu" name="Configuration" parent="main_website_support_menu" sequence="20" groups="website_support.support_group"/>
+      <menuitem 
+        id="website_support.website_support_config_parent_menu" 
+        name="Configuration" 
+        parent="main_website_support_menu" 
+        sequence="20" 
+        groups="support_ticket.group_manager"/>
  
     </data>
 </odoo>

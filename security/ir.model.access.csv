@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+support_ticket_manager, Support Tickets Manager Access,model_website_support_ticket,support_ticket.group_manager,1,1,1,1
+support_ticket_hl_operator, Support Tickets Hotline Operator Access,model_website_support_ticket,support_ticket.group_hotline,1,1,1,0
+support_ticket_employee, Support Tickets Employee Access,model_website_support_ticket,support_ticket.group_employee,1,1,1,0
