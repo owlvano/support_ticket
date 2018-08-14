@@ -1,38 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
 <data>
+  
+  <template id="assets_frontend" inherit_id="web.assets_frontend" name="website support ticket frontend assets">
+      <xpath expr="." position="inside">
+          <script type="text/javascript" src="/support_ticket/static/src/js/sorttable.js"></script>
+      </xpath>
+  </template>
 
-        <template id="support_front_assert" inherit_id="website.assets_frontend" name="Website Support Front Asserts">
-            <xpath expr="/t" position="inside">
-                <link rel="stylesheet" href="/website_support/static/src/css/support.css"/>
-            </xpath>
-        </template>
+  <template id="website_support.support_ticket_view_list" name="My Support Tickets" page="True">
+    <t t-call="website.layout">
+        <div class="container">
+
+
+            <div class="mt16 mb16">
+                <h1 class="text-center">My Support Tickets</h1>
+            </div>
         
-        
+            <div class="col-md-3"></div>
 
-<template id="support_submit_ticket" inherit_id="website_support.support_submit_ticket" name="Submit Support Ticket" page="True">
-    <xpath expr="//div[@id='subcategoy_container']" position="after">
-        <script>
-
-        $(document).ready(function() {
-
-          $(document).on('change',"#subcategory", function(){
-            update_sub_category_user();
-          });   
-
-          function update_sub_category_user(){
-            $.ajax({url: "/support/subcategories/fetch?subcategory=" + $("#subcategory").val(), success: function(result){
-              $("#subcategoy_user").html(result);
-            }});
-          }
-        });
-
-        </script>
-        <div id="subcategory_user">
-          
+            <div class="col-md-6">
+                <t t-if="ticket_count > 0"> 
+                    <table class="table table-striped table-bordered table-hover table-condensed sortable">
+                        <tr>
+                          <th class="sorttable_nosort">By</th>
+                          <th class="sorttable_nosort">Subject</th>
+                          <th class="sorttable_nosort">Category</th>
+                          <th class="sorttable_nosort">State</th>
+                          <th>Create Date</th>
+                        </tr>
+                        <t t-foreach="support_tickets" t-as="support_ticket">
+                            <tr>
+                              <td><t t-esc="support_ticket.person_name"/></td>
+                              <td><a t-attf-href="/support/ticket/view/#{support_ticket.id}"><t t-esc="support_ticket.subject"/></a></td>
+                              <td><t t-esc="support_ticket.category.name"/></td>
+                              <td><t t-esc="support_ticket.state.name"/></td>
+                              <td><t t-esc="support_ticket.create_date"/></td>
+                            </tr>
+                        </t>
+                </table>
+                </t>
+                <t t-if="ticket_count == 0">
+                    <div class="mt16 mb16">
+                      <h2 class="text-center">You have no support tickets</h2>
+                    </div>
+                </t>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-    </xpath>
-</template>
-
+        
+    </t>
+  </template>
 </data>
-</openerp>
+</odoo>
