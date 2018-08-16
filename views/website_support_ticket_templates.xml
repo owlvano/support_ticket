@@ -29,7 +29,7 @@
 
                 <t t-foreach="support_tickets" t-as="support_ticket">                
                   tickets.push({
-                    personName: "<t t-raw="support_ticket.person_name"/>", 
+                    personName: "<t t-esc="support_ticket.person_name"/>", 
                     subject: "<t t-esc="support_ticket.subject"/>",
                     category: "<t t-esc="support_ticket.category.name"/>",
                     state: "<t t-esc="support_ticket.state.name"/>",
@@ -40,11 +40,25 @@
                 return tickets;
               }
 
+              function unique(arr, prop) {
+                  return arr.map(function(e) { return e[prop]; }).filter(function(e,i,a){
+                      return i === a.indexOf(e);
+                  });
+              }
+              var ticketData = load_support_tickets();
 
               $('#ticketgrid').FancyGrid({    
                 width: 500,
                 height: 400,
-                data: load_support_tickets(),
+                data: ticketData,
+                defaults: {
+                  type: 'string',
+                  width: 100,
+                  filter: {
+                    header: true,
+                    emptyText: 'Search'
+                  }
+                },
                 columns: [{
                   index: 'personName',      
                   title: 'Person Name',
@@ -58,22 +72,26 @@
                 },{
                   index: 'category',
                   title: 'Category',
-                  type: 'string',
+                  type: 'combo',
+                  data: unique(ticketData, 'category'),
                   width: 100
                 },{
                   index: 'state',
                   title: 'State',
-                  type: 'string',
+                  type: 'combo',
+                  data: unique(ticketData, 'state'),
                   width: 100
                 },{
                   index: 'createDate',
                   title: 'Create Date',
                   type: 'date',
+                  sortable: true,
                   width: 100,
                   format: {
                     read: 'Y-m-d H:i:s',
                     write: 'Y-m-d H:i:s'
-                  }
+                  },
+                  filter: null
                 }]
               });
 
