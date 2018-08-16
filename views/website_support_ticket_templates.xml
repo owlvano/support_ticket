@@ -33,7 +33,8 @@
                     subject: "<t t-esc="support_ticket.subject"/>",
                     category: "<t t-esc="support_ticket.category.name"/>",
                     state: "<t t-esc="support_ticket.state.name"/>",
-                    createDate: "<t t-esc="support_ticket.create_date"/>"                  
+                    createDate: "<t t-esc="support_ticket.create_date"/>",
+                    id: '<a class="btn btn-info" t-attf-href="/support/ticket/view/#{support_ticket.id}">View</a>'      
                   });
                 </t>
 
@@ -48,39 +49,54 @@
               var ticketData = load_support_tickets();
 
               $('#ticketgrid').FancyGrid({    
-                width: 500,
+                width: 580,
                 height: 400,
                 data: ticketData,
                 defaults: {
+                  resizable: true
+                },
+                columns: [{
+                  index: 'personName',      
+                  title: 'Person Name',
                   type: 'string',
                   width: 100,
                   filter: {
                     header: true,
                     emptyText: 'Search'
                   }
-                },
-                columns: [{
-                  index: 'personName',      
-                  title: 'Person Name',
-                  type: 'string',
-                  width: 100
                 },{
                   index: 'subject',
                   title: 'Subject',
                   type: 'string',
-                  width: 100
+                  width: 100,
+                  filter: {
+                    header: true,
+                    emptyText: 'Search'
+                  }
                 },{
                   index: 'category',
                   title: 'Category',
                   type: 'combo',
+                  multiSelect: true, 
+                  itemCheckBox: true,
                   data: unique(ticketData, 'category'),
-                  width: 100
+                  width: 100,
+                  filter: {
+                    header: true,
+                    emptyText: 'Search'
+                  }
                 },{
                   index: 'state',
                   title: 'State',
                   type: 'combo',
+                  multiSelect: true, 
+                  itemCheckBox: true,
                   data: unique(ticketData, 'state'),
-                  width: 100
+                  width: 100,
+                  filter: {
+                    header: true,
+                    emptyText: 'Search'
+                  }
                 },{
                   index: 'createDate',
                   title: 'Create Date',
@@ -91,7 +107,12 @@
                     read: 'Y-m-d H:i:s',
                     write: 'Y-m-d H:i:s'
                   },
-                  filter: null
+                },{
+                  index: 'id',
+                  cellAlign: 'center',
+                  editable: false,
+                  ellipsis: false,
+                  width: 80
                 }]
               });
 
