@@ -1,0 +1,16 @@
+.fancy-grid-header-cell{
+	color: #000 !important;
+}
+
+.fancy-grid-cell{
+	color: #000 !important;
+}
+
+.fancy-grid-cell-wrapper{	
+	overflow: auto;
+}
+
+.fancy-grid-cell-inner{	
+	overflow-wrap: break-word;
+	white-space: normal;
+}

@@ -5,8 +5,9 @@
   <template id="assets_frontend" inherit_id="web.assets_frontend" name="website support ticket frontend assets">
       <xpath expr="." position="inside">
         <link href="/support_ticket/static/src/fancygrid/fancy.min.css" rel="stylesheet"/>
-        <link href="/support_ticket/static/src/css/fancygrid.text.wrap.css" rel="stylesheet"/>
+        <link href="/support_ticket/static/src/css/fancygrid.style.css" rel="stylesheet"/>
         <script src="/support_ticket/static/src/fancygrid/fancy.min.js"></script>
+
         <script>Fancy.MODULESDIR = '/support_ticket/static/src/fancygrid/modules/';</script>
       </xpath>
   </template>
@@ -34,7 +35,7 @@
                     category: "<t t-esc="support_ticket.category.name"/>",
                     state: "<t t-esc="support_ticket.state.name"/>",
                     createDate: "<t t-esc="support_ticket.create_date"/>",
-                    id: '<a class="btn btn-info" t-attf-href="/support/ticket/view/#{support_ticket.id}">View</a>'      
+                    viewBtn: '<a class="btn btn-info" t-attf-href="/support/ticket/view/#{support_ticket.id}">View</a>'      
                   });
                 </t>
 
@@ -48,7 +49,7 @@
               }
 
               function getFormattedDate(){
-                return ['<p>d-m-Y</p>', '<p>H:i:s</p>'].join("");
+                return ['<p>d-m-y</p>', '<p>H:i</p>'].join("");
               }
 
               var ticketData = load_support_tickets();
@@ -105,15 +106,15 @@
                   }
                 },{
                   index: 'createDate',
-                  title: 'Дата создания',
+                  title: 'Дата',
                   type: 'date',
                   sortable: true,
                   format: {
                     read: 'Y-m-d H:i:s',
                     write: getFormattedDate()
-                  },
+                  }
                 },{
-                  index: 'id',
+                  index: 'viewBtn',
                   cellAlign: 'center',
                   editable: false,
                   ellipsis: false,
