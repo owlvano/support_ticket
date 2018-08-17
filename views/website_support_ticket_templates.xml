@@ -5,6 +5,7 @@
   <template id="assets_frontend" inherit_id="web.assets_frontend" name="website support ticket frontend assets">
       <xpath expr="." position="inside">
         <link href="/support_ticket/static/src/fancygrid/fancy.min.css" rel="stylesheet"/>
+        <link href="/support_ticket/static/src/css/fancygrid.text.wrap.css" rel="stylesheet"/>
         <script src="/support_ticket/static/src/fancygrid/fancy.min.js"></script>
         <script>Fancy.MODULESDIR = '/support_ticket/static/src/fancygrid/modules/';</script>
       </xpath>
@@ -18,7 +19,6 @@
             <h1 class="text-center">My Support Tickets</h1>
           </div>
       
-          <div class="col-md-3"></div>
 
           <script>
 
@@ -42,85 +42,90 @@
               }
 
               function unique(arr, prop) {
-                  return arr.map(function(e) { return e[prop]; }).filter(function(e,i,a){
-                      return i === a.indexOf(e);
-                  });
+                return arr.map(function(e) { return e[prop]; }).filter(function(e,i,a){
+                    return i === a.indexOf(e);
+                });
               }
+
+              function getFormattedDate(){
+                return ['<p>d-m-Y</p>', '<p>H:i:s</p>'].join("");
+              }
+
               var ticketData = load_support_tickets();
 
               $('#ticketgrid').FancyGrid({    
-                width: 580,
+                width: 700,
                 height: 400,
                 data: ticketData,
+                selModel: 'row',
+                cellHeight: 75,
+                cellWrapper: true,
                 defaults: {
-                  resizable: true
+                  ellipsis: true,
+                  flex: 1
                 },
                 columns: [{
                   index: 'personName',      
-                  title: 'Person Name',
+                  title: 'Заявитель',
                   type: 'string',
-                  width: 100,
                   filter: {
                     header: true,
                     emptyText: 'Search'
                   }
                 },{
                   index: 'subject',
-                  title: 'Subject',
+                  title: 'Тема',
                   type: 'string',
-                  width: 100,
+                  flex: 2,
                   filter: {
                     header: true,
                     emptyText: 'Search'
                   }
                 },{
                   index: 'category',
-                  title: 'Category',
+                  title: 'Категория',
                   type: 'combo',
                   multiSelect: true, 
                   itemCheckBox: true,
                   data: unique(ticketData, 'category'),
-                  width: 100,
                   filter: {
                     header: true,
                     emptyText: 'Search'
                   }
                 },{
                   index: 'state',
-                  title: 'State',
+                  title: 'Состояние',
                   type: 'combo',
                   multiSelect: true, 
                   itemCheckBox: true,
                   data: unique(ticketData, 'state'),
-                  width: 100,
                   filter: {
                     header: true,
                     emptyText: 'Search'
                   }
                 },{
                   index: 'createDate',
-                  title: 'Create Date',
+                  title: 'Дата создания',
                   type: 'date',
                   sortable: true,
-                  width: 100,
                   format: {
                     read: 'Y-m-d H:i:s',
-                    write: 'Y-m-d H:i:s'
+                    write: getFormattedDate()
                   },
                 },{
                   index: 'id',
                   cellAlign: 'center',
                   editable: false,
                   ellipsis: false,
-                  width: 80
+                  width: 60
                 }]
               });
 
             });
 
           </script>
-
-          <div class="col-md-6">
+          <div class="col-md-2"/>
+          <div class="col-md-8">
               <t t-if="ticket_count > 0"> 
                 <div id="ticketgrid"></div>
               </t>
@@ -130,7 +135,7 @@
                 </div>
               </t>
           </div>
-          <div class="col-md-3"></div>
+          <div class="col-md-2"/>
         </div>
         
     </t>
