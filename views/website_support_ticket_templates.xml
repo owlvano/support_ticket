@@ -22,7 +22,7 @@
               <h1 class="text-center">My Support Tickets</h1>
             </div>
             <div class="col-md-2">
-              <p class="text-center"><a href="/support/ticket/submit">Submit a Ticket</a></p>              
+              <p class="text-center"><a class="btn btn-default" href="/support/ticket/submit">Отправить билет</a></p>              
             </div>
           </div>
       
