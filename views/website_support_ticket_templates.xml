@@ -16,8 +16,14 @@
     <t t-call="website.layout">
         <div class="container">
 
-          <div class="mt16 mb16">
-            <h1 class="text-center">My Support Tickets</h1>
+          <div class="mt16 mb16 row">
+            <div class="col-md-2"/>
+            <div class="col-md-8">
+              <h1 class="text-center">My Support Tickets</h1>
+            </div>
+            <div class="col-md-2">
+              <p class="text-center"><a href="/support/ticket/submit">Submit a Ticket</a></p>              
+            </div>
           </div>
       
 
@@ -141,5 +147,141 @@
         
     </t>
   </template>
+
+  <template id="website_support.support_submit_ticket" name="Submit Support Ticket" page="True">
+    <t t-call="website.layout">
+
+      <div id="wrap" class="oe_structure oe_empty">
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center">Submit Support Ticket</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <form action="/support/ticket/process" method="POST" class="form-horizontal mt32" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input style="display:none;" name="my_gold" value="256"/>
+            <div t-attf-class="form-group #{error and 'person_name' in error and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="person_name">Name</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="text" class="form-control" name="person_name" required="True" t-attf-value="#{person_name or ''}"/>
+                </div>
+            </div>
+            <div name="email_from_container" t-attf-class="form-group #{error and 'email' in error and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="email" class="form-control" name="email" required="True" t-attf-value="#{email or ''}" t-att-readonly="'readonly' if email else None"/>
+                </div>
+            </div>
+
+           <script>
+
+           $(document).ready(function() {
+
+               update_sub_categories()
+               
+               
+               $("#category").change(function() {
+                    update_sub_categories()
+               });
+
+               function update_sub_categories() {
+                   $.ajax({url: "/support/subcategories/fetch?category=" + $("#category").val(), success: function(result){
+                       $("#subcategoy_container").html(result);
+                       update_sub_category_fields();
+                   }});            
+               }
+
+               $(document).on('change',"#subcategory", function(){
+                   update_sub_category_fields();
+               });               
+               
+               function update_sub_category_fields() {
+                   $.ajax({url: "/support/subcategories/field/fetch?subcategory=" + $("#subcategory").val(), success: function(result){
+                       $("#subcategoy_fields").html(result);
+                   }});               
+               }
+               
+               $('#file').change(function(){
+                   if(this.files.length > <t t-esc="setting_max_ticket_attachments"/>) {
+                       alert("You can only upload " + <t t-esc="setting_max_ticket_attachments"/> + " files");
+                   }
+
+                   for (var x in this.files) {
+                       if (this.files[x].size / 1024 > <t t-esc="setting_max_ticket_attachment_filesize"/>) {
+                           alert(this.files[x].name + " exceeds the " + <t t-esc="setting_max_ticket_attachment_filesize"/> + "KB file size limit");
+                           $('#file').val('');
+                       }
+                   }
+                   
+               });
+
+            });
+
+
+
+
+            </script>
+
+            <div t-attf-class="form-group #{error and 'category' in error and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="name">Category</label>
+                <div class="col-md-7 col-sm-8">
+                    <select class="form-control" id="category" name="category">
+                        <t t-foreach="categories" t-as="category">
+                <option t-attf-value="#{category.id}"><t t-esc="category.name"/></option>
+                        </t>
+                    </select>
+                </div>
+            </div>
+            <div id="subcategoy_container">
+            
+            </div>
+            <div id="subcategoy_fields">
+            
+            </div>
+            <div name="subject_container" t-attf-class="form-group #{error and 'subject' in error and 'has-error' or ''}">
+          <label class="col-md-3 col-sm-4 control-label" for="subject">Subject</label>
+          <div class="col-md-7 col-sm-8">
+              <input type="subject" class="form-control" name="subject" required="True"/>
+          </div>
+            </div>
+            <div name="file_container" t-attf-class="form-group #{error and 'file' in error and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="file">Add Attachments</label>
+          <div class="col-md-7 col-sm-8">
+                    <div class="btn btn-default btn-file col-md-12"><input name="file" id="file" type="file" multiple="multiple"/></div>
+                </div>
+            </div>
+            <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="description">Description</label>
+                <div class="col-md-7 col-sm-8">
+                    <textarea  class="form-control" name="description" style="min-height: 120px" required="True"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-sm-offset-4 col-sm-3 col-md-2">
+                    <button class="btn btn-primary btn-lg btn-block">Submit Ticket</button>
+
+                </div>
+                <div class="col-md-offset-3 col-sm-offset-3 col-sm-2 col-md-2">
+                    <button class="btn btn-primary btn-lg btn-block" onclick="goBack()">Cancel</button>
+                    
+                </div>
+                <script>
+                function goBack() {
+                    window.history.back();
+                }
+                </script>                
+            </div>
+        </form>
+
+      </div>
+    </t>
+    
+</template>
 </data>
 </odoo>
