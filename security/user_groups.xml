@@ -15,6 +15,7 @@
 
         <record id="group_hotline" model="res.groups">
             <field name="name">Hotline Operator</field>
+            <field name="implied_ids" eval="[(4, ref('support_ticket.group_employee'))]"/>
             <field name="category_id" ref="support_ticket.module_category_web_support"/>
         </record>
 
@@ -24,13 +25,15 @@
             <field name="category_id" ref="support_ticket.module_category_web_support"/>
         </record>
 
+        <!-- Employees only have access to tickets they're assigned to -->
         <record id="employee_rule" model="ir.rule">
             <field name="name">Employee Ticket View Rule</field>
             <field name="model_id" ref="model_website_support_ticket" />
             <field name="domain_force">[('user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('group_employee'))]"/>
         </record>
-
+        
+        <!-- Hotline operator and manager have access to all support tickets -->
         <record id="hotline_rule" model="ir.rule">
             <field name="name">HL Operator Ticket View Rule</field>
             <field name="model_id" ref="model_website_support_ticket" />
