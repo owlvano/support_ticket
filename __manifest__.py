@@ -12,6 +12,8 @@
         'security/user_groups.xml',
         'security/ir.model.access.csv',
         'views/support_ticket_views.xml',
+        'wizard/website_support_ticket_report_wizard_views.xml',
+        'report/website_support_ticket_report_views.xml',
         'views/website_support_ticket_views.xml',
         'views/website_support_ticket_subcategory_views.xml',
         'views/website_support_ticket_templates.xml',      

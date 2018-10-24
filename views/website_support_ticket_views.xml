@@ -74,7 +74,7 @@
         name="Customer Support" 
         parent="main_website_support_menu" 
         sequence="10" 
-        groups="support_ticket.group_employee,support_ticket.group_hotline"/>
+        groups="base.group_user"/>
 
       <menuitem 
         id="website_support.website_support_ticket_menu" 

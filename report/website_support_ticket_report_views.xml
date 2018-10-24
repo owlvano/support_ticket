@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>                    
+
+        <record id="website_support_ticket_report_pivot" model="ir.ui.view">
+            <field name="name">website.support.ticket.report.pivot</field>
+            <field name="model">website.support.ticket.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Support Ticket Report" display_quantity="true" disable_linking="True">
+
+                    <field name="closed_nbr" type="measure"/>
+                    <field name="not_closed_nbr" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+       <record id="action_website_support_ticket_report_pivot" model="ir.actions.act_window">
+            <field name="name">Support Tickets Report</field>
+            <field name="res_model">website.support.ticket.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot</field>
+<!--             <field name="search_view_id" ref="view_task_project_user_search"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field> -->
+        </record>
+
+      <menuitem 
+        id="website_support_report_parent_menu"
+        name="Report"
+        parent="main_website_support_menu"
+        sequence="15"
+        groups="base.group_user"/>
+
+      <menuitem 
+        id="website_support_report_tickets_menu"
+        name="Support Tickets"
+        parent="website_support_report_parent_menu"
+        action="action_wst_report_wizard"
+        sequence="10" />
+
+    </data>
+</odoo>

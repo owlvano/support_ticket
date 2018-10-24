@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        
+        <record id="wst_wizard_form" model="ir.ui.view">
+            <field name="name">website.support.ticket.report.wizard.form</field>
+            <field name="model">website.support.ticket.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                        </group>
+                        <group>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button 
+                            type="object" 
+                            name="do_search" 
+                            string="Search"
+                            attrs="{'invisible':
+                            [('date_from', '=', False),
+                            ('date_to', '=', False)]}" />
+                        <button special="cancel" string="Cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window 
+            id="action_wst_report_wizard"
+            name="Search by Date Period"
+            res_model="website.support.ticket.report.wizard"
+            view_mode="form"
+            target="new" />
+
+    </data>
+</odoo>    
