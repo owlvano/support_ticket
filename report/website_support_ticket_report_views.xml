@@ -6,10 +6,11 @@
             <field name="name">website.support.ticket.report.pivot</field>
             <field name="model">website.support.ticket.report</field>
             <field name="arch" type="xml">
-                <pivot string="Support Ticket Report" display_quantity="true" disable_linking="True">
-
+                <pivot string="Support Ticket Report" disable_linking="True">
+                    <field name="created_nbr" type="measure"/>
                     <field name="closed_nbr" type="measure"/>
                     <field name="not_closed_nbr" type="measure"/>
+                    <field name="close_time_days" type="measure"/>
                 </pivot>
             </field>
         </record>
