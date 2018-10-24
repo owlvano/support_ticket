@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>                    
+
+      <menuitem 
+      	id="main_website_support_menu" 
+      	web_icon="support_ticket,static/description/icon.png"
+      	name="Website Support"/>
+ 
+    </data>
+</odoo>
