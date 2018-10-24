@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0-20180727\n"
+"Project-Id-Version: Odoo Server 10.0-20181019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-07 21:31+0000\n"
-"PO-Revision-Date: 2018-08-07 21:31+0000\n"
+"POT-Creation-Date: 2018-10-24 21:33+0000\n"
+"PO-Revision-Date: 2018-10-24 21:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,22 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_closed_nbr
+msgid "# of Closed Tickets"
+msgstr "Закрытые билеты"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_created_nbr
+msgid "# of Created Tickets"
+msgstr "Выданные билеты"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_not_closed_nbr
+msgid "# of Not Closed Tickets"
+msgstr "Незакрытые билеты"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_user_id
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_subcategory_user_id
 #: model:ir.ui.view,arch_db:support_ticket.website_support_ticket_subcategory_view_form
 #: model:ir.ui.view,arch_db:support_ticket.website_support_ticket_subcategory_view_tree
@@ -23,6 +39,151 @@ msgid "Assigned User"
 msgstr "Ответственный Пользователь"
 
 #. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_close_time_days
+msgid "Average Close Time (in days)"
+msgstr "Среднее время закрытия (дни)"
+
+#. module: support_ticket
+#: model:ir.ui.view,arch_db:support_ticket.wst_wizard_form
+msgid "Cancel"
+msgstr "Отмена"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_category
+msgid "Category"
+msgstr "Категория"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_company_id
+msgid "Company"
+msgstr "Компания"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_date_from
+msgid "Date From"
+msgstr "Дата (От)"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_date_to
+msgid "Date To"
+msgstr "Дата (До)"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_display_name
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_display_name
+msgid "Display Name"
+msgstr "Отображаемое имя"
+
+#. module: support_ticket
+#: model:res.groups,name:support_ticket.group_employee
+msgid "Employee"
+msgstr "Сотрудник"
+
+#. module: support_ticket
+#: model:res.groups,name:support_ticket.group_hotline
+msgid "Hotline Operator"
+msgstr "Оператор горячей линии"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_id
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report___last_update
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard___last_update
+msgid "Last Modified on"
+msgstr "Последний раз изменено"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_write_date
+msgid "Last Updated on"
+msgstr "Последний раз обновлено"
+
+#. module: support_ticket
+#: model:res.groups,name:support_ticket.group_manager
+msgid "Manager"
+msgstr "Менеджер"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_partner_id
+msgid "Partner"
+msgstr "Партнёр"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_priority_id
+msgid "Priority"
+msgstr "Приоритет"
+
+#. module: support_ticket
+#: model:ir.ui.menu,name:support_ticket.website_support_report_parent_menu
+msgid "Report"
+msgstr "Отчёт"
+
+#. module: support_ticket
+#: model:ir.ui.view,arch_db:support_ticket.wst_wizard_form
+msgid "Search"
+msgstr "Поиск"
+
+#. module: support_ticket
+#: model:ir.actions.act_window,name:support_ticket.action_wst_report_wizard
+msgid "Search by Date Period"
+msgstr "Поиск по периоду дат"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_state
+msgid "State"
+msgstr "Регион"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_sub_category_id
+msgid "Sub Category"
+msgstr "Подкатегория"
+
+#. module: support_ticket
+#: model:ir.ui.view,arch_db:support_ticket.website_support_ticket_report_pivot
+msgid "Support Ticket Report"
+msgstr "Отчет по билетам поддержки"
+
+#. module: support_ticket
+#: code:addons/support_ticket/wizard/website_support_ticket_report_wizard.py:20
+#, python-format
+msgid "Support Ticket Report (%s - %s)"
+msgstr "Отчет по билетам поддержки (%s - %s)"
+
+#. module: support_ticket
+#: model:ir.ui.menu,name:support_ticket.website_support_report_tickets_menu
+msgid "Support Tickets"
+msgstr "Билеты поддержки"
+
+#. module: support_ticket
+#: model:ir.actions.act_window,name:support_ticket.action_website_support_ticket_report_pivot
+msgid "Support Tickets Report"
+msgstr "Отчет по билетам поддержки"
+
+#. module: support_ticket
+#: model:ir.module.category,description:support_ticket.module_category_web_support
+msgid "User access level for the Website Support module"
+msgstr "Пользовательский уровень доступа к модулю Website Support"
+
+#. module: support_ticket
+#: model:ir.module.category,name:support_ticket.module_category_web_support
 #: model:ir.ui.menu,name:support_ticket.main_website_support_menu
 msgid "Website Support"
 msgstr "Горячая Линия"
@@ -31,6 +192,16 @@ msgstr "Горячая Линия"
 #: model:ir.model,name:support_ticket.model_website_support_ticket
 msgid "Website Support Ticket"
 msgstr "Website Support Ticket"
+
+#. module: support_ticket
+#: model:ir.model,name:support_ticket.model_website_support_ticket_report
+msgid "Website Support Ticket Report"
+msgstr "Website Support Ticket Report"
+
+#. module: support_ticket
+#: model:ir.model,name:support_ticket.model_website_support_ticket_report_wizard
+msgid "Website Support Ticket Report Wizard"
+msgstr "Website Support Ticket Report Wizard"
 
 #. module: support_ticket
 #: model:ir.model,name:support_ticket.model_website_support_ticket_subcategory

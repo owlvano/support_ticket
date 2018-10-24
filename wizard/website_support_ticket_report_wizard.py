@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.fields import Date
 
 class WebsiteSupportTicketReportWizard(models.TransientModel):
@@ -17,7 +17,7 @@ class WebsiteSupportTicketReportWizard(models.TransientModel):
         self.env['website.support.ticket.report'].init(self.date_from, self.date_to)
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Support Ticket Report (%s - %s)' % (self.format_date(self.date_from), self.format_date(self.date_to)), 
+            'name': _('Support Ticket Report (%s - %s)') % (self.format_date(self.date_from), self.format_date(self.date_to)), 
             'res_model': 'website.support.ticket.report',
             'view_mode': 'pivot',
             'context': {'date_from': self.date_from, 'date_to': self.date_to},
