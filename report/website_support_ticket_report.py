@@ -9,7 +9,7 @@ class WebsiteSupportTicketReport(models.Model):
     _description = "Website Support Ticket Report"
     _auto = False
 
-    name = fields.Char("Ticket Name", readonly=True)
+    ticket_name = fields.Char("Ticket Name", readonly=True)
     priority_id = fields.Many2one('website.support.ticket.priority', "Priority", readonly=True)
     partner_id = fields.Many2one('res.partner', "Partner", readonly=True)
     company_id = fields.Many2one('res.company', "Company", readonly=True)
@@ -27,10 +27,10 @@ class WebsiteSupportTicketReport(models.Model):
         select_str = """
              SELECT
                     wst.id as id,
-                    ('#' || wst.id || ': ' || wst.subject) as name,
+                    ( '#' || wst.id || ': ' || wst.subject) as ticket_name,
                     wst.priority_id as priority_id,
-                    wst.partner_id as partner_id,
-                    wst.company_id as company_id,
+                    p.id as partner_id,
+                    p.parent_id as company_id,
                     wst.category as category,
                     wst.sub_category_id as sub_category_id,
                     s.name as state,
@@ -100,13 +100,13 @@ class WebsiteSupportTicketReport(models.Model):
         group_by_str = """
                 GROUP BY
                     wst.id,
-                    name,
+                    ticket_name,
                     wst.priority_id,
-                    wst.partner_id,
-                    wst.company_id,
+                    p.id,
+                    p.parent_id,
                     wst.category,
                     wst.sub_category_id,
-                    state,
+                    s.name,
                     wst.user_id
         """
         return group_by_str
@@ -122,6 +122,7 @@ class WebsiteSupportTicketReport(models.Model):
             %s
             FROM website_support_ticket wst
                 left join website_support_ticket_states s on (wst.state = s.id)
+                left join res_partner p on (wst.partner_id = p.id)
             %s
             %s
         """ % (self._table, self._select(select_dict), self._where(condition_dict), self._group_by())
