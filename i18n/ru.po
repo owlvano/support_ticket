@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0-20181019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 21:33+0000\n"
-"PO-Revision-Date: 2018-10-24 21:33+0000\n"
+"POT-Creation-Date: 2018-10-29 10:05+0000\n"
+"PO-Revision-Date: 2018-10-29 10:05+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -54,6 +54,12 @@ msgid "Category"
 msgstr "Категория"
 
 #. module: support_ticket
+#: code:addons/support_ticket/report/website_support_ticket_report.py:28
+#, python-format
+msgid "Close Comment"
+msgstr "Закр. комментарий"
+
+#. module: support_ticket
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_company_id
 msgid "Company"
 msgstr "Компания"
@@ -61,12 +67,12 @@ msgstr "Компания"
 #. module: support_ticket
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_create_uid
 msgid "Created by"
-msgstr "Создано"
+msgstr "Создал"
 
 #. module: support_ticket
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_create_date
 msgid "Created on"
-msgstr "Создан"
+msgstr "Создано"
 
 #. module: support_ticket
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_date_from
@@ -77,6 +83,11 @@ msgstr "Дата (От)"
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_wizard_date_to
 msgid "Date To"
 msgstr "Дата (До)"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_description
+msgid "Description"
+msgstr "Описание"
 
 #. module: support_ticket
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_display_name
@@ -149,7 +160,7 @@ msgstr "Поиск по периоду дат"
 #. module: support_ticket
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_state
 msgid "State"
-msgstr "Регион"
+msgstr "Состояние"
 
 #. module: support_ticket
 #: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_sub_category_id
@@ -176,6 +187,11 @@ msgstr "Билеты поддержки"
 #: model:ir.actions.act_window,name:support_ticket.action_website_support_ticket_report_pivot
 msgid "Support Tickets Report"
 msgstr "Отчет по билетам поддержки"
+
+#. module: support_ticket
+#: model:ir.model.fields,field_description:support_ticket.field_website_support_ticket_report_ticket_name
+msgid "Ticket Name"
+msgstr "Имя билета"
 
 #. module: support_ticket
 #: model:ir.module.category,description:support_ticket.module_category_web_support
