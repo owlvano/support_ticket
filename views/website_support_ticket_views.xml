@@ -56,7 +56,9 @@
             </field>
             <field name="category" position="replace"/>
             <field name="email" position="replace"/>
-            <field name="ticket_number_display" position="replace"/>
+            <field name="ticket_number_display" position="replace">
+              <field name="ticket_number"/>
+            </field>
             <field name="create_user_id" position="replace"/>
             <field name="subject" position="after">
               <field name="create_user_id"/>
