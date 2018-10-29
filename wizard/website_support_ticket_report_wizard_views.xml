@@ -20,7 +20,8 @@
                             name="do_search" 
                             string="Search"
                             attrs="{'invisible':
-                            [('date_from', '=', False),
+                            ['|', 
+                            ('date_from', '=', False),
                             ('date_to', '=', False)]}" />
                         <button special="cancel" string="Cancel" />
                     </footer>
