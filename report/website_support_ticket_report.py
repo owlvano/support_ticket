@@ -10,7 +10,7 @@ class WebsiteSupportTicketReport(models.Model):
     _auto = False
 
     ticket_name = fields.Char('Ticket Name', readonly=True)
-    description = fields.Text('Description', readonly=True)
+    subject = fields.Char('Subject', readonly=True)
     priority_id = fields.Many2one('website.support.ticket.priority', 'Priority', readonly=True)
     partner_id = fields.Many2one('res.partner', 'Partner', readonly=True)
     company_id = fields.Many2one('res.company', 'Company', readonly=True)
@@ -31,7 +31,7 @@ class WebsiteSupportTicketReport(models.Model):
                     wst.id as id,
                     concat( '#', wst.ticket_number, '; %s: ' || wst.close_comment) as ticket_name,
         """ % close_comment_string + """
-                    wst.description as description,
+                    wst.subject as subject,
                     wst.priority_id as priority_id,
                     p.id as partner_id,
                     p.parent_id as company_id,
@@ -105,7 +105,7 @@ class WebsiteSupportTicketReport(models.Model):
                 GROUP BY
                     wst.id,
                     ticket_name,
-                    wst.description,
+                    wst.subject,
                     wst.priority_id,
                     p.id,
                     p.parent_id,
