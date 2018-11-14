@@ -9,8 +9,12 @@ class WebsiteSupportTicket(models.Model):
     
     @api.onchange('sub_category_id')
     def _onchange_sub_category_id(self):
+        # Update responsiblue user if he's empty
         if not self.user_id:
             self.user_id = self.sub_category_id.user_id
+        # Update priority based on subcategory
+        self.priority_id = self.sub_category_id.priority_id
+            
 
     @api.onchange('category')
     def _onchange_category(self):
@@ -24,6 +28,9 @@ class WebsiteSupportTicket(models.Model):
         if new_id.sub_category_id.user_id:
             new_id.user_id = new_id.sub_category_id.user_id
 
+        #Automatically assign a priority
+        if new_id.sub_category_id.priority_id:
+            new_id.priority_id = new_id.sub_category_id.priority_id
             
         return new_id
    
