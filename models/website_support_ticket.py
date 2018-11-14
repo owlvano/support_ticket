@@ -31,4 +31,10 @@ class WebsiteSupportTicket(models.Model):
 class WebsiteSupportTicketSubCategories(models.Model):
 
     _inherit = "website.support.ticket.subcategory"
+
+    def _default_priority_id(self):
+        default_priority = self.env['website.support.ticket.priority'].search([('sequence','=','1')])
+        return default_priority[0]
+
     user_id = fields.Many2one('res.users', string="Assigned User")
+    priority_id = fields.Many2one('website.support.ticket.priority', default=_default_priority_id, string="Priority")
