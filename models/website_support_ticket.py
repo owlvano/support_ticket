@@ -5,6 +5,8 @@ class WebsiteSupportTicket(models.Model):
 
     _inherit = "website.support.ticket"
     
+    active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
+    
     @api.onchange('sub_category_id')
     def _onchange_sub_category_id(self):
         if not self.user_id:
