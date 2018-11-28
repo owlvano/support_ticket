@@ -19,6 +19,6 @@
         'views/website_support_ticket_templates.xml',
     ],
     'demo': [],
-    'depends': ['mail','web', 'crm', 'website', 'website_support'],
+    'depends': ['website_support'],
     'installable': True,
 }
