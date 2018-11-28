@@ -76,7 +76,7 @@
       <record id="website_support_ticket_view_search" model="ir.ui.view">
           <field name="name">website.support.ticket.form.search</field>
           <field name="model">website.support.ticket</field>
-           <field name="inherit_id" ref="website_support.website_support_ticket_view_search" />
+          <field name="inherit_id" ref="website_support.website_support_ticket_view_search" />
           <field name="arch" type="xml">
               <search position="inside">
                 <separator />

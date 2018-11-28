@@ -16,7 +16,7 @@
         'report/website_support_ticket_report_views.xml',
         'views/website_support_ticket_views.xml',
         'views/website_support_ticket_subcategory_views.xml',
-        'views/website_support_ticket_templates.xml',      
+        'views/website_support_ticket_templates.xml',
     ],
     'demo': [],
     'depends': ['mail','web', 'crm', 'website', 'website_support'],
