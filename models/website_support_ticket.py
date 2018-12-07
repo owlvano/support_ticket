@@ -32,7 +32,16 @@ class WebsiteSupportTicket(models.Model):
             new_id.priority_id = new_id.sub_category_id.priority_id
 
         return new_id
-   
+
+
+class WebsiteSupportTicketCategories(models.Model):
+
+    _inherit = "website.support.ticket.categories"
+
+    active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
+
+
+
 
 class WebsiteSupportTicketSubCategories(models.Model):
 
@@ -42,6 +51,6 @@ class WebsiteSupportTicketSubCategories(models.Model):
         default_priority = self.env['website.support.ticket.priority'].search([('sequence','=','1')])
         return default_priority[0]
 
-    active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
+    active = fields.Boolean(default=True, help="The active field allows you to hide the subcategory without removing it.")
     user_id = fields.Many2one('res.users', string="Assigned User")
     priority_id = fields.Many2one('website.support.ticket.priority', default=_default_priority_id, string="Priority")
