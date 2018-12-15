@@ -13,7 +13,7 @@ class WebsiteSupportTicketReport(models.Model):
     subject = fields.Char('Subject', readonly=True)
     priority_id = fields.Many2one('website.support.ticket.priority', 'Priority', readonly=True)
     partner_id = fields.Many2one('res.partner', 'Partner', readonly=True)
-    company_id = fields.Many2one('res.company', 'Company', readonly=True)
+    company_id = fields.Many2one('res.partner', 'Company', readonly=True)
     category = fields.Many2one('website.support.ticket.categories', 'Category', readonly=True)
     sub_category_id = fields.Many2one('website.support.ticket.subcategory', 'Sub Category', readonly=True)
     state = fields.Char('State', readonly=True)
